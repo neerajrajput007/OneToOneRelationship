@@ -35,8 +35,8 @@ public class Hospital {
 	private Date openDate;
 	@Column(name = "no_of_patient")
 	private long patient;
-	@OneToOne(mappedBy = "hospital", cascade = CascadeType.ALL)
-	@JoinColumn(name = "goverment_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "goverment_id", referencedColumnName = "goverment_id")
 	private Goverment goverment;
 
 	public Goverment getGoverment() {
