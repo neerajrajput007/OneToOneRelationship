@@ -15,7 +15,8 @@ public class Goverment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String govermentId;
 	private String address;
-
+        @OneToOne
+	@JsonIgnore
 	private Hospital hospital;
 
 	public String getGovermentId() {
