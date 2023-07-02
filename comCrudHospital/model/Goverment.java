@@ -8,22 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+//@Data // for auto getters setters and constructors
 @Table(name = "goverment")
 public class Goverment {
 	@Id
-	@Column(name = "goverment_id", nullable = false, length = 100)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String govermentId;
+	@Column(name = "goverment_id", unique = true)
+	private int govermentId;
 	private String address;
-        @OneToOne
+
+	@OneToOne
 	@JsonIgnore
 	private Hospital hospital;
 
-	public String getGovermentId() {
+	public int getGovermentId() {
 		return govermentId;
 	}
 
-	public void setGovermentId(String govermentId) {
+	public void setGovermentId(int govermentId) {
 		this.govermentId = govermentId;
 	}
 
@@ -33,6 +35,31 @@ public class Goverment {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+
+	public Goverment(int govermentId, String address, Hospital hospital) {
+		super();
+		this.govermentId = govermentId;
+		this.address = address;
+		this.hospital = hospital;
+	}
+
+	public Goverment(String address, Hospital hospital) {
+		super();
+		this.address = address;
+		this.hospital = hospital;
+	}
+
+	public Goverment() {
+		super();
 	}
 
 }
