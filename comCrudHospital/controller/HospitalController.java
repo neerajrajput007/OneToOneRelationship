@@ -18,7 +18,7 @@ import comCrudHospital.model.Hospital;
 @RestController
 @RequestMapping("hospitaldetails")
 public class HospitalController {
-
+//hello its me bitbucket after write pls ctrl s save controller first 
 	@Autowired
 	HospitalService hospitalService;
 
@@ -47,6 +47,6 @@ public class HospitalController {
 	private Hospital update(@RequestBody Hospital hospital) {
 		hospitalService.saveOrUpdate(hospital);
 		return hospital;
-	}
 
+	}
 }
