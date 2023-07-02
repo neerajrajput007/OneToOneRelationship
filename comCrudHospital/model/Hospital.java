@@ -13,9 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
+//@Data  // for auto getters setters and constructors
 @Table(name = "hospitalDetails")
 public class Hospital {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "hospital_id", unique = true, nullable = false, length = 100)
@@ -38,14 +38,6 @@ public class Hospital {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "goverment_id", referencedColumnName = "goverment_id")
 	private Goverment goverment;
-
-	public Goverment getGoverment() {
-		return goverment;
-	}
-
-	public void setGoverment(Goverment goverment) {
-		this.goverment = goverment;
-	}
 
 	public long getId() {
 		return id;
@@ -103,8 +95,6 @@ public class Hospital {
 		this.specialization = specialization;
 	}
 
-//	@Column(name = "opendate")
-
 	public Date getOpenDate() {
 		return openDate;
 	}
@@ -121,4 +111,35 @@ public class Hospital {
 		this.patient = patient;
 	}
 
+	public Goverment getGoverment() {
+		return goverment;
+	}
+
+	public void setGoverment(Goverment goverment) {
+		this.goverment = goverment;
+	}
+
+	public Hospital(long id, String name, String functionality, long size, String location, String ownership,
+			String specialization, Date openDate, long patient, Goverment goverment) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.functionality = functionality;
+		this.size = size;
+		this.location = location;
+		this.ownership = ownership;
+		this.specialization = specialization;
+		this.openDate = openDate;
+		this.patient = patient;
+		this.goverment = goverment;
+	}
+
+	public Hospital() {
+		super();
+	}
+
+	public Hospital(Goverment goverment) {
+		super();
+		this.goverment = goverment;
+	}
 }
